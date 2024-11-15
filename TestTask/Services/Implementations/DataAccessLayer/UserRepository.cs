@@ -50,8 +50,11 @@ namespace TestTask.Services.Implementations.DataAccessLayer
                     usersMaxOrdersPrice.Add(user.Id, userOrdersSum);
                 }
             }
+            // Get max orders sum for user 
             int maxOrdersSum = usersMaxOrdersPrice.Values.Max();
+            // Get user Id from max orders sum
             int userWithMaxOrdersSumId = usersMaxOrdersPrice.FirstOrDefault(x => x.Value == maxOrdersSum).Key;
+            // Get model of user from user Id
             var userWithMaxOrdersSum = users.FirstOrDefault(u => u.Id == userWithMaxOrdersSumId);
             return userWithMaxOrdersSum;
 
